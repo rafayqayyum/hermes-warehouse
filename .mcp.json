@@ -2,7 +2,7 @@
   "mcpServers": {
     "hermes-warehouse": {
       "type": "http",
-      "url": "${HERMES_WAREHOUSE_URL:-https://hermes-be.dubizzlelabs.run/mcp}",
+      "url": "https://hermes-be.dubizzlelabs.run/mcp",
       "oauth": {
         "clientId": "Yo_PaFk7UDl9g5Zwjh5qLDqnsLKSOAJ9NIOxVDl0gQg"
       }
