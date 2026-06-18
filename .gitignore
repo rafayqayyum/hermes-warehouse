@@ -1,0 +1,9 @@
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local eval runs (transcripts, results) — keep the kit, not the runs
+skills/warehouse-analytics/evals/live-results/
+feedback.json

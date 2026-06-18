@@ -1,0 +1,33 @@
+{
+  "skill_name": "warehouse-analytics",
+  "evals": [
+    {
+      "id": 1,
+      "name": "metric-trend-with-tenant-scope",
+      "prompt": "hey, how many new listings did we get last month on the live marketplace? and roughly how does that compare to the month before — up or down?",
+      "expected_output": "Discovers the right schema/table via list_schemas (no guessing), uses a tenant-scoped aggregate with the :external_tenant_id placeholder where required, returns two monthly counts with a clear up/down comparison, validates before running, and states the time window/assumptions.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "cross-source-split-and-join",
+      "prompt": "can you work out average revenue per active user for last quarter? active = used the app in the period. i think users and payments live in different project DBs btw",
+      "expected_output": "Recognizes that users and payments are in different data sources, so it does NOT attempt a single cross-source join; instead runs one query per source (or explains why) and combines the results itself, defining 'active' explicitly and aggregating rather than dumping rows.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "dashboard-decomposition",
+      "prompt": "I want a little dashboard to keep an eye on marketplace health — signups over time, new listings per week, and which cities have the most completed transactions. can you set that up?",
+      "expected_output": "Decomposes into discrete widgets, picks sensible widget_type per widget (line/bar/metric), writes rolling-window queries (not hard-coded dates), previews results, and emits widget specs in the Report/Widget shape (title, widget_type, sql_query, config), while being clear that this MCP only reads and persistence is a separate step.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "access-gap-and-my-access",
+      "prompt": "what data do i actually have access to? and can i query the payments_live database — i need transaction amounts",
+      "expected_output": "Uses my_access to report the user's profiles and accessible schemas, checks payments_live specifically, and if it's not accessible, explains plainly that it's an access gap and how to request it from an admin — without inventing names or attempting to query it anyway.",
+      "files": []
+    }
+  ]
+}
