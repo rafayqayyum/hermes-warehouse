@@ -4,7 +4,7 @@ A Claude plugin that lets people query the **Hermes data warehouse** (Amazon Red
 in plain language — safely. It bundles two halves that work together:
 
 - **MCP server connection** (`hermes-warehouse`) — the authenticated, read-only SQL
-  surface served by [`hermes-backend`](../hermes-backend) at `POST /api/mcp`. Every call
+  surface served by [`hermes-backend`](../hermes-backend) at `POST /mcp`. Every call
   is scoped to the signed-in user's **access profiles**, so a user can only ever see and
   query the schemas they're entitled to. The server validates SQL, enforces single
   schema-qualified `SELECT`s, injects tenant scoping, and caps result rows.
@@ -55,29 +55,32 @@ commit SHA as a new version (continuous updates).
 
 ## Configure the warehouse endpoint
 
-The MCP endpoint is **per-tenant** — the tenant is conveyed by the subdomain. Set the URL
-before first use (the `.mcp.json` reads it from an environment variable, falling back to a
-placeholder you must replace):
+The bundled `.mcp.json` points at `https://hermes-be.dubizzlelabs.run/mcp` and pins the OAuth
+**client ID** (a public PKCE client — not a secret). To point at a different host/tenant, edit the
+`url` in `.mcp.json`, or register via the CLI:
 
 ```bash
-export HERMES_WAREHOUSE_URL="https://<your-tenant>.<your-domain>/mcp"
+claude mcp add --transport http hermes-warehouse "https://<your-tenant>.<your-domain>/mcp"
 ```
 
-The bundled `.mcp.json` already defaults to `https://hermes-be.dubizzlelabs.run/mcp`, so the env var is
-only needed to point at a different tenant/host.
+### Adding it as a custom connector (Claude.ai / Desktop)
 
-Or register it directly with the CLI:
+If you add the server directly instead of via the plugin, enter **literal** values — the connector
+dialog does not expand `${VAR}` templates:
 
-```bash
-claude mcp add --transport http hermes-warehouse "https://hermes-be.dubizzlelabs.run/mcp"
-```
+| Field | Value |
+|---|---|
+| URL | `https://hermes-be.dubizzlelabs.run/mcp` |
+| OAuth Client ID | `Yo_PaFk7UDl9g5Zwjh5qLDqnsLKSOAJ9NIOxVDl0gQg` |
+| OAuth Client Secret | *(leave blank — public PKCE client)* |
 
-## Auth (handled automatically)
+## Auth
 
-The endpoint uses **OAuth 2.1 + PKCE** with Google sign-in (Doorkeeper). On first use,
-Claude self-registers (dynamic client registration) and runs the browser login flow — no
-token pasting. After sign-in, the user only sees the schemas/tables their access profiles
-grant.
+The endpoint uses **OAuth 2.1 + PKCE** with Google sign-in (Doorkeeper). The server requires a
+**pre-registered** OAuth client (dynamic client registration is **not** enabled), which is why the
+client ID is bundled in `.mcp.json` and entered in the connector dialog — there is no client secret
+(public client). The browser login runs once; after sign-in, the user only sees the schemas/tables
+their access profiles grant.
 
 ## What you can ask
 
