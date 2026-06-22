@@ -1,6 +1,6 @@
 {
   "name": "hermes-warehouse",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Query the Hermes data warehouse (Amazon Redshift) through governed, access-scoped, read-only SQL. Bundles the warehouse-analytics skill that takes a plain-language question all the way to validated results or a dashboard, plus the connection to the hermes-warehouse MCP server.",
   "author": {
     "name": "Dubizzle Labs"
