@@ -12,6 +12,7 @@ Contents:
 - [Step 3 — Pick the widget type](#step-3--pick-the-widget-type)
 - [Step 4 — Produce the widget spec](#step-4--produce-the-widget-spec)
 - [Step 5 — Preview and persist](#step-5--preview-and-persist)
+- [Step 6 — Downloadable report files](#step-6--downloadable-report-files-a-different-output-mode-than-the-in-chat-preview)
 - [Worked example](#worked-example)
 
 ## The model: Reports and Widgets
@@ -126,6 +127,35 @@ A full dashboard is a small report object with an ordered list of these widgets:
   validated widget specs as the handoff plus the previewed results; creating the persistent report is
   done via that surface. Be clear with the user about this boundary rather than implying the dashboard
   is saved when only the query has run.
+
+## Step 6 — Downloadable report files (a different output mode than the in-chat preview)
+
+"Preview and persist" above covers two destinations: a live chat preview, or a saved Hermes report.
+There's a third thing users ask for that isn't either of those: **a file they can download, keep, or
+send to someone** — signaled by words like "downloadable", "a file I can keep", "send me", "export
+this", "save this as a report". Don't reuse the in-chat preview's markup for this — it will render
+broken once it leaves the chat.
+
+**Why it breaks:** the in-chat preview (built with the Visualizer/Imagine tool) is styled with CSS
+variables the host page provides — `var(--color-background-secondary)`, `var(--color-text-primary)`,
+etc. — specifically so it adapts to light/dark mode while running *inside* claude.ai. Extract that same
+markup into a standalone `.html` file and open it outside the host: every `var(--color-...)` resolves to
+nothing. Backgrounds, text colors, and borders all silently disappear — which looks like "the formatting
+got stripped," but is really a missing CSS dependency.
+
+**What to do instead:** when the deliverable is a downloadable file, build a second, separate,
+self-contained HTML file rather than exporting the Visualizer widget:
+
+- Write a real `<style>` block with literal values (hex colors, plain `px`/`rem` units) — no
+  `var(--color-...)` references, since there's no host page to supply them.
+- Keep the same content and chart logic; Chart.js still works the same way — load it from
+  `cdnjs.cloudflare.com` via a `<script src="...">` tag exactly as in the preview.
+- Save it with `create_file` to the outputs directory and hand it over with `present_files`, the same
+  as any other generated file.
+
+The in-chat preview and the downloadable file are two different artifacts answering two different
+requests — build the preview to show the numbers *now*, and build the standalone file only when the
+person actually asks to download, keep, or send something.
 
 ## Worked example
 
