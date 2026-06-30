@@ -1,4 +1,4 @@
-# Live eval kit — warehouse-analytics
+# Live eval kit — hermes-analyst
 
 You run this against a **real** `hermes-warehouse` MCP connection (the only way to validate true
 end-to-end behavior and data correctness). It tells you whether the skill actually changes how Claude
@@ -48,7 +48,7 @@ Keep your substitutions in the results file so we can interpret the runs.
 - **Fresh session per prompt** — so context from one doesn't leak into the next.
 - **Same model** you intend to ship with.
 - For each prompt, ideally run it **twice**:
-  - **Baseline** — MCP connected, but the `warehouse-analytics` skill **not** installed/available. This
+  - **Baseline** — MCP connected, but the `hermes-analyst` skill **not** installed/available. This
     isn't "no help" — Claude still has the tools' descriptions and the server's own short INSTRUCTIONS.
     It's the bar the skill has to beat.
   - **With skill** — the `hermes-warehouse` plugin installed so the skill is available.

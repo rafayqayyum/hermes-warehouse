@@ -1,4 +1,4 @@
-# hermes-warehouse (Claude plugin)
+# hermes-insights (Claude plugin)
 
 A Claude plugin that lets people query the **Hermes data warehouse** (Amazon Redshift)
 in plain language — safely. It bundles two halves that work together:
@@ -11,7 +11,7 @@ in plain language — safely. It bundles two halves that work together:
   **knowledge-base search** (`search_knowledge_base`) — semantic search over the curated
   metric definitions attached to each schema, gated by the same access profiles, so one
   connector surfaces every knowledge base the user can reach (no per-corpus connector needed).
-- **`warehouse-analytics` skill** — the playbook Claude follows to take a vague question
+- **`hermes-analyst` skill** — the playbook Claude follows to take a vague question
   ("how are listings doing this month?") through schema discovery, query construction,
   validation, execution, and presentation — ending in either a fetched answer or a
   dashboard spec.
@@ -33,7 +33,7 @@ Once it's pushed to a git repo, anyone installs it with two commands:
 #    e.g. /plugin marketplace add https://git.dubizzlelabs.run/data/hermes-warehouse.git
 
 # 2. Install the plugin from it
-/plugin install hermes-warehouse@dubizzle-plugins
+/plugin install hermes-insights@hermes-marketplace
 ```
 
 The bundled `.mcp.json` is auto-discovered on install; on first use of a warehouse tool the
@@ -47,7 +47,7 @@ claude --plugin-dir /path/to/hermes-warehouse
 
 # Or exercise the real marketplace flow against the local repo before pushing:
 /plugin marketplace add /path/to/hermes-warehouse
-/plugin install hermes-warehouse@dubizzle-plugins
+/plugin install hermes-insights@hermes-marketplace
 ```
 
 ### Shipping updates
@@ -99,7 +99,7 @@ hermes-warehouse/
 ├── .claude-plugin/plugin.json          # plugin manifest
 ├── .mcp.json                           # hermes-warehouse MCP server (HTTP)
 └── skills/
-    └── warehouse-analytics/
+    └── hermes-analyst/
         ├── SKILL.md                    # the end-to-end journey
         └── references/
             ├── query-rules.md          # the SQL contract + worked examples

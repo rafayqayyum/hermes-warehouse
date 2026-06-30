@@ -1,7 +1,7 @@
 {
-  "name": "hermes-warehouse",
+  "name": "hermes-insights",
   "version": "0.4.0",
-  "description": "Query the Hermes data warehouse (Amazon Redshift) through governed, access-scoped, read-only SQL, and search the knowledge base attached to each schema for metric definitions. Bundles the warehouse-analytics skill that takes a plain-language question all the way to validated results or a dashboard — looking up what each metric means via search_knowledge_base before it computes — plus the connection to the hermes-warehouse MCP server.",
+  "description": "Query the Hermes data warehouse (Amazon Redshift) through governed, access-scoped, read-only SQL, and search the knowledge base attached to each schema for metric definitions. Bundles the hermes-analyst skill that takes a plain-language question all the way to validated results or a dashboard — looking up what each metric means via search_knowledge_base before it computes — plus the connection to the hermes-warehouse MCP server.",
   "author": {
     "name": "Dubizzle Labs"
   },

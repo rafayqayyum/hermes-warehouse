@@ -5,5 +5,5 @@
 .vscode/
 
 # Local eval runs (transcripts, results) — keep the kit, not the runs
-skills/warehouse-analytics/evals/live-results/
+skills/hermes-analyst/evals/live-results/
 feedback.json

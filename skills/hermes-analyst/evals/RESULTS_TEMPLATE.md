@@ -1,4 +1,4 @@
-# Live eval results — warehouse-analytics
+# Live eval results — hermes-analyst
 
 > Copy this file per run (e.g. `results-iteration-1.md`). Fill in as you go, then send it back.
 

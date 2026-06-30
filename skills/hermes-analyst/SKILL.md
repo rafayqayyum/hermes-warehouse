@@ -1,5 +1,5 @@
 ---
-name: warehouse-analytics
+name: hermes-analyst
 description: >-
   Answer data questions against the Hermes data warehouse (Amazon Redshift) by driving the
   `hermes-warehouse` MCP server's read-only, access-scoped tools (`list_schemas`,
@@ -155,7 +155,7 @@ cites wins — don't substitute a sibling because its columns match.
 the live tables with a couple of quick grounding probes (does the tenant resolve, is the volume
 plausible, does the join line up) before running the real aggregate — kept within the row cap. Both the
 KB searches and these probes are private workbench steps: run them **silently** and never narrate them
-(see [the one rule](#warehouse-analytics) above). If neither the catalog descriptions nor the schema's
+(see [the one rule](#hermes-analyst) above). If neither the catalog descriptions nor the schema's
 knowledge base carry anything for the term, fall back to ordinary discovery (phase 2) and **state your
 assumptions** — don't invent a definition.
 
