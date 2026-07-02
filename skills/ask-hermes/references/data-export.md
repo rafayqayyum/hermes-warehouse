@@ -22,7 +22,7 @@ Contents:
 ## What an export is (and the boundary)
 
 The deliverable is a real **`.xlsx`** (or **`.csv`**) file the user downloads — not a table pasted in
-chat. The `hermes-warehouse` MCP is **read-only**: `run_query` returns rows, but it cannot create a
+chat. The `hermes-connect` MCP is **read-only**: `run_query` returns rows, but it cannot create a
 file. So an export is two phases:
 
 1. **Read** the rows through `run_query` (one query, or several — see the row cap below).

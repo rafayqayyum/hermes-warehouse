@@ -1,6 +1,6 @@
 # Live eval kit — ask-hermes
 
-You run this against a **real** `hermes-warehouse` MCP connection (the only way to validate true
+You run this against a **real** `hermes-connect` MCP connection (the only way to validate true
 end-to-end behavior and data correctness). It tells you whether the skill actually changes how Claude
 behaves, and where it falls short, so we can iterate.
 
@@ -20,7 +20,7 @@ find in [`RESULTS_TEMPLATE.md`](RESULTS_TEMPLATE.md) (copy it per run) and bring
    - and **no access** to at least one schema you can name (for the access-gap case #4).
 2. **Connect the MCP** in a Claude Code session:
    ```bash
-   claude mcp add --transport http hermes-warehouse "https://<tenant>.<domain>/api/mcp"
+   claude mcp add --transport http hermes-connect "https://<tenant>.<domain>/api/mcp"
    ```
    The first tool call kicks off the Google OAuth flow in the browser. Sign in as the test user.
 3. **Sanity check** the connection: ask Claude to "list the warehouse schemas I can access." You should

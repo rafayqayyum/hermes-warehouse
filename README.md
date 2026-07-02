@@ -3,7 +3,7 @@
 A Claude plugin that lets people query the **Hermes data warehouse** (Amazon Redshift)
 in plain language — safely. It bundles two halves that work together:
 
-- **MCP server connection** (`hermes-warehouse`) — the authenticated, read-only SQL
+- **MCP server connection** (`hermes-connect`) — the authenticated, read-only SQL
   surface served by [`hermes-backend`](../hermes-backend) at `POST /mcp`. Every call
   is scoped to the signed-in user's **access profiles**, so a user can only ever see and
   query the schemas they're entitled to. The server validates SQL, enforces single
@@ -30,7 +30,7 @@ Once it's pushed to a git repo, anyone installs it with two commands:
 ```bash
 # 1. Register the marketplace (GitHub shorthand, or a full git URL for self-hosted)
 /plugin marketplace add <owner>/<repo>
-#    e.g. /plugin marketplace add https://git.dubizzlelabs.run/data/hermes-warehouse.git
+#    e.g. /plugin marketplace add https://git.dubizzlelabs.run/data/hermes-connect.git
 
 # 2. Install the plugin from it
 /plugin install ask-hermes@hermes
@@ -43,10 +43,10 @@ Google OAuth flow runs in the browser (one-time per user, token stored in the OS
 
 ```bash
 # Load straight from a local checkout:
-claude --plugin-dir /path/to/hermes-warehouse
+claude --plugin-dir /path/to/hermes-connect
 
 # Or exercise the real marketplace flow against the local repo before pushing:
-/plugin marketplace add /path/to/hermes-warehouse
+/plugin marketplace add /path/to/hermes-connect
 /plugin install ask-hermes@hermes
 ```
 
@@ -63,7 +63,7 @@ The bundled `.mcp.json` points at `https://hermes-be.dubizzlelabs.run/mcp` and p
 `url` in `.mcp.json`, or register via the CLI:
 
 ```bash
-claude mcp add --transport http hermes-warehouse "https://<your-tenant>.<your-domain>/mcp"
+claude mcp add --transport http hermes-connect "https://<your-tenant>.<your-domain>/mcp"
 ```
 
 ### Adding it as a custom connector (Claude.ai / Desktop)
@@ -95,9 +95,9 @@ compliant query, validates and runs it, and explains the result.
 ## Layout
 
 ```
-hermes-warehouse/
+hermes-connect/
 ├── .claude-plugin/plugin.json          # plugin manifest
-├── .mcp.json                           # hermes-warehouse MCP server (HTTP)
+├── .mcp.json                           # hermes-connect MCP server (HTTP)
 └── skills/
     └── ask-hermes/
         ├── SKILL.md                    # the end-to-end journey

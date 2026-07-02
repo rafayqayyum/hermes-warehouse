@@ -121,7 +121,7 @@ A full dashboard is a small report object with an ordered list of these widgets:
 - **The widget spec is a machine handoff, not user-facing.** The JSON below is what gets sent to the
   report surface to build the dashboard; don't paste it at the user. Describe the dashboard in plain
   terms instead ("three tiles: active users, a weekly listings trend, and top cities by transactions").
-- **Persisting is a separate step from querying.** The `hermes-warehouse` MCP is **read-only** — it has
+- **Persisting is a separate step from querying.** The `hermes-connect` MCP is **read-only** — it has
   no tool to create reports or widgets. Saving a dashboard happens through Hermes' report/widget
   surface (the Report Manager: reports + widgets endpoints), not through this MCP. So you produce the
   validated widget specs as the handoff plus the previewed results; creating the persistent report is

@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "hermes-warehouse": {
+    "hermes-connect": {
       "type": "http",
       "url": "https://hermes-be.dubizzlelabs.run/mcp",
       "oauth": {

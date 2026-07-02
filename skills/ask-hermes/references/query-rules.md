@@ -1,6 +1,6 @@
 # Query rules — the SQL contract for `run_query` / `validate_query`
 
-This is the full contract the `hermes-warehouse` MCP server enforces. The point isn't to memorize
+This is the full contract the `hermes-connect` MCP server enforces. The point isn't to memorize
 rules — it's to understand *why* each exists, so your first query usually passes and, when it
 doesn't, you fix the right thing instead of thrashing.
 

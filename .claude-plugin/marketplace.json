@@ -8,7 +8,7 @@
     {
       "name": "ask-hermes",
       "source": "./",
-      "description": "Query the Hermes data warehouse (Amazon Redshift) in plain language — access-scoped, read-only SQL via the hermes-warehouse MCP server, with per-schema knowledge-base search for metric definitions, plus a guided question→results/dashboard skill."
+      "description": "Query the Hermes data warehouse (Amazon Redshift) in plain language — access-scoped, read-only SQL via the hermes-connect MCP server, with per-schema knowledge-base search for metric definitions, plus a guided question→results/dashboard skill."
     }
   ]
 }

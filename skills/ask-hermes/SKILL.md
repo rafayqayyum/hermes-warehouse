@@ -2,7 +2,7 @@
 name: ask-hermes
 description: >-
   Answer data questions against the Hermes data warehouse (Amazon Redshift) by driving the
-  `hermes-warehouse` MCP server's read-only, access-scoped tools (`list_schemas`,
+  `hermes-connect` MCP server's read-only, access-scoped tools (`list_schemas`,
   `search_knowledge_base`, `validate_query`, `run_query`). Use this whenever the user needs warehouse data — metrics,
   counts, totals, trends, "how many", "top N", reports, dashboards, KPIs, funnels, conversion,
   cohort/retention, or "pull/fetch/show me the data on X" — even when they don't name a table,
@@ -17,7 +17,7 @@ description: >-
 # Ask Hermes
 
 Your job is to turn a person's data question into a **trustworthy answer** — or a dashboard — by
-driving the `hermes-warehouse` MCP server and the knowledge base that explains what its data means. You
+driving the `hermes-connect` MCP server and the knowledge base that explains what its data means. You
 are the guide for the whole journey, from a half-formed question to a result the user can rely on.
 
 **The one rule that overrides everything else:** your reply to the user is the *business answer* — a
@@ -41,7 +41,7 @@ mechanics. The user should see a question go in and a clean answer come out — 
 
 ## What you're connected to
 
-The `hermes-warehouse` MCP server exposes the data warehouse as **read-only, governed SQL** plus a
+The `hermes-connect` MCP server exposes the data warehouse as **read-only, governed SQL** plus a
 searchable knowledge base. It has five tools:
 
 - **`list_schemas`** — the catalog, with meaning attached. Drill-down: no params → schemas (each ≈ one
